@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "whatschecker"
+authors = [
+  { name="Hasan Rasel", email="rrss.mahmud@gmail.com" },
+]
+description = "Concurrent WhatsApp number checker via WhatsApp Web"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "Verifier"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "undetected-chromedriver",
+    "selenium"
+]
+dynamic = ["version"]
+
+# [tool.setuptools.dynamic]
+# version = {attr = "whatschecker.__version__"}
+
+[project.urls]
+Homepage = "https://github.com/bitbytelab/WhatsChecker"
+Issues = "https://github.com/bitbytelab/WhatsChecker/issues"
+
+[tool.setuptools_scm]
