@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools >= 77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,10 +12,26 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
-keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "Verifier"]
+keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "WhatsApp Validator"]
 classifiers = [
-    "Programming Language :: Python :: 3",
+    "Development Status :: 0 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Customer Service",
+    "Intended Audience :: Education",
+    "Intended Audience :: Marketing",
+    "Intended Audience :: SMS",
+    "Intended Audience :: Telecommunications Industry",
+    "License :: MIT",
     "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Communications :: Chat",
+    "Topic :: Communications :: Telephony",
+    "Topic :: Marketing :: SMS",
+    "Topic :: Marketing :: Lead",
+    "Topic :: Marketing :: Data Extraction",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
     "undetected-chromedriver",
@@ -23,11 +39,9 @@ dependencies = [
 ]
 dynamic = ["version"]
 
-# [tool.setuptools.dynamic]
-# version = {attr = "whatschecker.__version__"}
+[tool.setuptools.dynamic]
+version = {attr = "whatschecker.__VERSION__"}
 
 [project.urls]
 Homepage = "https://github.com/bitbytelab/WhatsChecker"
 Issues = "https://github.com/bitbytelab/WhatsChecker/issues"
-
-[tool.setuptools_scm]
