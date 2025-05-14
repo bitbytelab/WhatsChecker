@@ -11,6 +11,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
+from .logger_setup import setup_logger
 
 __VERSION__ = "0.0.3"
 
@@ -477,6 +478,8 @@ def main():
 
 
 if __name__ == "__main__":
+    logger = setup_logger()
+
     subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], stdout=subprocess.DEVNULL)
     subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "setuptools"], stdout=subprocess.DEVNULL)
 
