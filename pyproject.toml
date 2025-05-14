@@ -10,34 +10,26 @@ authors = [
 description = "Concurrent WhatsApp number checker via WhatsApp Web"
 readme = "README.md"
 requires-python = ">=3.9"
-license = "Proprietary"
-license-files = ["LICEN[CS]E*"]
 keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "WhatsApp Validator"]
 classifiers = [
-    "Development Status :: 0 - Beta",
     "Intended Audience :: Developers",
-    "Intended Audience :: Customer Service",
     "Intended Audience :: Education",
-    "Intended Audience :: Marketing",
-    "Intended Audience :: SMS",
-    "Intended Audience :: Telecommunications Industry",
-    "License :: Proprietary",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Topic :: Communications :: Chat",
     "Topic :: Communications :: Telephony",
-    "Topic :: Marketing :: SMS",
-    "Topic :: Marketing :: Lead",
-    "Topic :: Marketing :: Data Extraction",
     "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
     "Topic :: Software Development :: Build Tools",
-    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 dependencies = [
     "undetected-chromedriver",
     "selenium"
 ]
 dynamic = ["version"]
+
+[project.license]
+text = "Proprietary"
 
 [tool.setuptools.dynamic]
 version = {attr = "whatschecker.__VERSION__"}
