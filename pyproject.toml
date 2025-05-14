@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools >= 77"]
+requires = ["setuptools >= 77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -41,6 +41,13 @@ dynamic = ["version"]
 
 [tool.setuptools.dynamic]
 version = {attr = "whatschecker.__VERSION__"}
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+include = ["sepal_ui*"]
+exclude = ["docs*", "tests*", "local*", "dist*", "whatschecker.egg-info*"]
 
 [project.urls]
 Homepage = "https://github.com/bitbytelab/WhatsChecker"

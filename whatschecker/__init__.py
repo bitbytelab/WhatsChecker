@@ -385,7 +385,7 @@ def parse_args():
     args = parser.parse_args()
 
     # Load fallback config if needed
-    config_path = Path("../local/whatschecker.config.json")
+    config_path = Path("whatschecker.config.json")
     config = {}
     if config_path.exists():
         with open(config_path, "r") as f:
@@ -477,6 +477,9 @@ def main():
 
 
 if __name__ == "__main__":
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], stdout=subprocess.DEVNULL)
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "setuptools"], stdout=subprocess.DEVNULL)
+
     try:
         import undetected_chromedriver as uc
     except ImportError:
