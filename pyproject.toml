@@ -10,7 +10,7 @@ authors = [
 description = "Concurrent WhatsApp number checker via WhatsApp Web"
 readme = "README.md"
 requires-python = ">=3.9"
-license = "MIT"
+license = "Proprietary"
 license-files = ["LICEN[CS]E*"]
 keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "WhatsApp Validator"]
 classifiers = [
@@ -21,7 +21,7 @@ classifiers = [
     "Intended Audience :: Marketing",
     "Intended Audience :: SMS",
     "Intended Audience :: Telecommunications Industry",
-    "License :: MIT",
+    "License :: Proprietary",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Topic :: Communications :: Chat",
@@ -46,8 +46,8 @@ version = {attr = "whatschecker.__VERSION__"}
 include-package-data = false
 
 [tool.setuptools.packages.find]
-include = ["sepal_ui*"]
-exclude = ["docs*", "tests*", "local*", "dist*", "whatschecker.egg-info*"]
+include = ["whatschecker*"]
+exclude = ["docs*", "tests*", "local*", "dist*", "whatschecker.egg-info*", ".venv*", ".run*"]
 
 [project.urls]
 Homepage = "https://github.com/bitbytelab/WhatsChecker"
