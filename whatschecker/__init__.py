@@ -12,7 +12,7 @@ from pathlib import Path
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 
-__VERSION__ = "0.0.2"
+__VERSION__ = "0.0.3"
 
 
 def init_driver(profile_dir: str, proxy: str = None, headless: bool = False):
