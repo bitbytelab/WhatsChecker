@@ -1,13 +1,13 @@
+import os
 import sys
 import logging
 from pathlib import Path
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 
-LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
+LOG_DIR = Path(os.getcwd()) / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE = LOG_DIR / "whatschecker.log"
-
 
 class StreamToLogger:
     """

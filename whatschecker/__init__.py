@@ -13,7 +13,7 @@ from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
 from .logger_setup import setup_logger
 
-__VERSION__ = "0.0.3"
+__VERSION__ = "0.0.4"
 
 
 def init_driver(profile_dir: str, proxy: str = None, headless: bool = False):
