@@ -30,6 +30,9 @@ dependencies = [
 ]
 dynamic = ["version"]
 
+[project.scripts]
+whatschecker = "whatschecker.cli:main"
+
 [tool.setuptools.dynamic]
 version = {attr = "whatschecker.__VERSION__"}
 
