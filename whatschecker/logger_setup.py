@@ -15,16 +15,19 @@ class StreamToLogger:
     """
     def __init__(self, logger: logging.Logger):
         self.logger = logger
-        self.terminal = sys.__stdout__  # Keep original stdout for direct console prints
+        # self.terminal = sys.__stdout__  # Keep original stdout for direct console prints
 
     def write(self, message):
         message = message.strip()
         if message:
             self.logger.info(message)
-            self.terminal.write(message + "\n")
+            # removed to get rid of duplicate prints in console,
+            # The logger already prints to console because of the StreamHandler.
+            # self.terminal.write(message + "\n")
 
     def flush(self):
-        self.terminal.flush()
+        # self.terminal.flush()
+        pass
 
 
 def setup_logger(name: str = "whatschecker") -> logging.Logger:
