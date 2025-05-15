@@ -380,7 +380,7 @@ def parse_args():
     parser.add_argument("--valid", default=None, help="Output file for active numbers")
     parser.add_argument("--invalid", default=None, help="Output file for inactive numbers")
     parser.add_argument("--delay", "-d", type=int, default=5, help="Base delay between checks (in seconds)")
-    parser.add_argument("--headless", "-h", action="store_true", default=False, help="Run browser in headless mode")
+    parser.add_argument("--headless", action="store_true", default=False, help="Run browser in headless mode")
     parser.add_argument("--add-account", "-a", action="store_true", help="Add new WhatsApp account(s) via QR login before checking")
 
     args = parser.parse_args()

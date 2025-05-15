@@ -10,6 +10,8 @@ authors = [
 description = "Concurrent WhatsApp number checker via WhatsApp Web"
 readme = "README.md"
 requires-python = ">=3.9"
+license = "LicenseRef-Proprietary"
+license-files = ["LICEN[CS]E*"]
 keywords = ["WhatsApp Checker", "WhatsApp", "Checker", "WhatsApp Validator"]
 classifiers = [
     "Intended Audience :: Developers",
@@ -28,14 +30,8 @@ dependencies = [
 ]
 dynamic = ["version"]
 
-[project.license]
-text = "Proprietary"
-
 [tool.setuptools.dynamic]
 version = {attr = "whatschecker.__VERSION__"}
-
-[tool.setuptools]
-include-package-data = false
 
 [tool.setuptools.packages.find]
 include = ["whatschecker*"]
