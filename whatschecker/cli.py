@@ -284,10 +284,10 @@ def extract_chat_list_contacts(account_profile, proxy, args, thread_id):
 
     login_success = wait_for_login(driver)
     if not login_success:
-        print(f"[ ! ] Closing webdriver")
+        print(f"[  !  ] Closing webdriver")
         driver.close()
         driver.quit()
-        print(f"[ ! ] Removing Account Profile")
+        print(f"[  !  ] Removing Account Profile")
         shutil.rmtree(account_profile)
         return
 
@@ -301,12 +301,12 @@ def extract_chat_list_contacts(account_profile, proxy, args, thread_id):
     prev_item_count = 0
     same_count_retries = 0
 
-    print("[ ! ] Scrolling and collecting Chat list contacts...")
+    print("[  !  ] Scrolling and collecting Chat list contacts...")
     while True:
         list_items = chat_list_div.find_elements(By.CSS_SELECTOR, 'div[role="listitem"]')
         for item in list_items:
             contact_text = item.text.replace('\n', ' || ')
-            print(f"[ > ] {contact_text}")
+            print(f"[  >  ] {contact_text}")
 
             if contact_text in seen_items:
                 continue
@@ -338,7 +338,8 @@ def extract_chat_list_contacts(account_profile, proxy, args, thread_id):
 
             if data.get('name'):
                 contacts_data.append(data)
-                print(f"[{len(contacts_data)}] extracted: {data['name']}")
+                print(f"[{len(contacts_data):^5}] extracted: {data['name']}")
+                append_to_file("extracted_chat_list_contacts.txt", f"{data}")
 
 
         current_count = len(seen_items)
@@ -412,14 +413,14 @@ def parse_args():
         return base_dir / f"account{i}"
 
     if args.add_account:
-        print("[ + ] Add new WhatsApp account(s) via QR")
+        print("[  +  ] Add new WhatsApp account(s) via QR")
         while True:
             new_profile = get_next_account_dir()
-            print(f"[ + ] Launching session for: {new_profile.name}")
+            print(f"[  +  ] Launching session for: {new_profile.name}")
             driver = init_driver(str(new_profile), headless=False)  # Force visible for QR
             wait_for_login(driver)
             driver.quit()
-            print(f"[ ✓ ] Saved profile: {new_profile.name}")
+            print(f"[  ✓  ] Saved profile: {new_profile.name}")
             choice = input("Add another account? (y/n): ").strip().lower()
             if choice != 'y':
                 break
@@ -427,12 +428,12 @@ def parse_args():
     existing_profiles = sorted(p.name for p in base_dir.iterdir() if p.is_dir() and p.name.startswith("account"))
 
     if not existing_profiles:
-        print("[ ! ] No WhatsApp accounts found. Starting one now...")
+        print("[  !  ] No WhatsApp accounts found. Starting one now...")
         new_profile = get_next_account_dir()
         driver = init_driver(str(new_profile), headless=False)
         wait_for_login(driver)
         driver.quit()
-        print(f"[ ✓ ] Saved profile: {new_profile.name}")
+        print(f"[  ✓  ] Saved profile: {new_profile.name}")
         existing_profiles = [new_profile.name]
 
     args.accounts = [str(base_dir / name) for name in existing_profiles]
@@ -482,7 +483,7 @@ def main():
         num_threads = len(args.accounts)
         proxy_list = args.proxies or [None] * num_threads
 
-        print(f"[ + ] Launching {num_threads} threads for contacts extraction...")
+        print(f"[  +  ] Launching {num_threads} threads for contacts extraction...")
 
         with ThreadPoolExecutor(max_workers=num_threads) as executor:
             for i, account in enumerate(args.accounts):
@@ -500,7 +501,7 @@ def main():
         proxy_list = args.proxies or [None] * num_threads
         number_chunks = chunkify(numbers, num_threads)
 
-        print(f"[ + ] Launching {num_threads} threads for checking {len(numbers)} numbers...")
+        print(f"[  +  ] Launching {num_threads} threads for checking {len(numbers)} numbers...")
 
         with ThreadPoolExecutor(max_workers=num_threads) as executor:
             for i, (account, chunk) in enumerate(zip(args.accounts, number_chunks)):
@@ -509,27 +510,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], stdout=subprocess.DEVNULL)
-    # subprocess.check_call([sys.executable, "-m", "pip", "install", "--upgrade", "setuptools"], stdout=subprocess.DEVNULL)
-    #
-    # try:
-    #     import undetected_chromedriver as uc
-    # except ImportError:
-    #     print(f"undetected_chromedriver not found. Installing...")
-    #     subprocess.check_call([sys.executable, "-m", "pip", "install", "undetected-chromedriver"])
-    #     import undetected_chromedriver as uc
-    #
-    # try:
-    #     from selenium.webdriver.common.by import By
-    # except ImportError:
-    #     print(f"selenium not found. Installing...")
-    #     subprocess.check_call([sys.executable, "-m", "pip", "install", "selenium"])
-    #     from selenium.webdriver.common.by import By
-    #
-    # import undetected_chromedriver as uc
-    # from selenium.webdriver.common.by import By
-    # from selenium.webdriver.support.ui import WebDriverWait
-    # from selenium.webdriver.support import expected_conditions as EC
-    # from selenium.common.exceptions import TimeoutException, NoSuchElementException
-
     main()

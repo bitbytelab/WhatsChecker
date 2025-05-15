@@ -7,7 +7,7 @@ name = "whatschecker"
 authors = [
   { name="Hasan Rasel", email="rrss.mahmud@gmail.com" },
 ]
-description = "Concurrent WhatsApp number checker via WhatsApp Web"
+description = "Discover who uses WhatsApp and Extract"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "LicenseRef-Proprietary"
